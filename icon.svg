@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Brain Reels: a mahjong tile with a B, and a play button for the reels. -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0" stop-color="#d92b4b" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#d92b4b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#1a1a21"/>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+  <rect x="136" y="110" width="240" height="306" rx="38" fill="#9f1239"/>
+  <rect x="136" y="88" width="240" height="306" rx="38" fill="#fffdf7"/>
+  <rect x="150" y="102" width="212" height="278" rx="28" fill="none" stroke="#e8dfcd" stroke-width="4"/>
+  <text x="256" y="300" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="200" font-weight="700" fill="#d92b4b">B</text>
+  <circle cx="372" cy="384" r="62" fill="#d92b4b" stroke="#1a1a21" stroke-width="12"/>
+  <path d="M356 352 L402 384 L356 416 Z" fill="#fff"/>
+</svg>
