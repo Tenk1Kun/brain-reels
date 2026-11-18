@@ -1,0 +1,30 @@
+import{C as e,D as t,E as n,O as r,_ as i,b as a,g as o,m as s,p as c,s as l,v as u,y as d}from"./index-B0_WzJ8T.js";import{playBrainGame as f}from"./brainGameView-CZmjn_HU.js";var p=`brain-reels-arcade-bests`,m=`brain-reels-arcade-recent`,h=6;function g(e){let n=t(e);if(typeof n!=`object`||!n||Array.isArray(n))return{};let r={};for(let{id:e}of s){let t=n[e];if(Array.isArray(t)){let n=t.filter(e=>typeof e==`number`&&Number.isFinite(e)&&e>=0);n.length>0&&(r[e]=n.slice(-6))}}return r}function _(e,t){let i=g(n(m)),a=[...i[e]??[],t].slice(-6);return r(m,JSON.stringify({...i,[e]:a})),a}function v(e,t){let n=t.slice(0,-1);if(n.length<2)return``;let r=t[t.length-1],i=n.reduce((e,t)=>e+t,0)/n.length,a=o(e,Math.round(i*10)/10);return r===i?`Right on your average (${a}).`:u(e,r,i)?`📈 Better than your average (${a}).`:`Your average lately: ${a}.`}function y(e){let n=t(e);if(typeof n!=`object`||!n||Array.isArray(n))return{};let r={};for(let{id:e}of s){let t=n[e];typeof t==`number`&&Number.isFinite(t)&&t>=0&&(r[e]=t)}return r}function b(e,t){let i=y(n(p)),a=i[e]??null;return u(e,t,a)?(r(p,JSON.stringify({...i,[e]:t})),{best:t,newBest:a!==null}):{best:a,newBest:!1}}function x(e){return s.map(e=>e.id).filter(t=>e[t]!==void 0)}function S(e){return e===s.length?`🏆 All ${s.length} games played!`:e===0?`🎮 ${s.length} games to try`:`🎮 ${e} of ${s.length} games played`}var C={reaction:`⚡`,number:`🔢`,sequence:`🟪`,letters:`🔤`,snake:`🐍`,minesweeper:`💣`,minigolf:`⛳`,mahjong:`🀄`,memory:`🎴`,clash:`🌈`,math:`➗`,slide:`🧩`,aim:`👆`,hidden:`🙈`,pattern:`🔲`,whack:`🔨`,tower:`🗼`,switch:`💡`,sudoku:`🧮`,stacker:`🧱`,dodge:`☄️`,bricks:`🏓`,gems:`💎`,maze:`🌀`,picture:`🖼️`,pegs:`⚫`,shade:`🎨`,arrows:`⬅️`,dots:`🔵`,mirror:`🔄`,search:`🔍`,chase:`🔟`,symbols:`🔣`,fractions:`⚖️`,flood:`🌊`,beat:`🥁`,pairs:`🃏`,guess:`🔤`,rain:`🌧️`,nback:`🧠`,ten:`➕`,knight:`♞`,truefalse:`✅`,define:`📖`,unscramble:`🔀`,darts:`🎯`,line:`📏`,clock:`🕐`};function w(e,t=Math.random,n=[]){let r=s.map(e=>e.id).filter(t=>t!==e),i=r.filter(e=>!n.includes(e)),a=i.length>0?i:r;return a[Math.floor(t()*a.length)]}function T(t,n){let r=d()[t]?.lastPassed??null;return r===null?`In a gate, any first score passes and sets the bar.`:e(t,n,r)?`In a gate, that would pass. ✅`:`In a gate, that wouldn't pass yet.`}function E(e,t){let r=new AbortController,d=new AbortController;e.innerHTML=`
+    <main class="feed practice">
+      <section class="gate" role="region" aria-label="Brain games">
+        <div id="gate-card" class="gate-card"></div>
+      </section>
+      <button id="end-button" class="end-session" type="button">✕ Leave</button>
+    </main>
+  `;let m=e.querySelector(`#gate-card`);function h(){m.innerHTML=`
+      <p class="gate-label">🎮 Brain games</p>
+      <h2>Pick a game</h2>
+      <p class="hint">Free play: nothing to unlock, and your gate bars stay as they are.</p>
+      <button id="arcade-surprise" type="button">🎲 Surprise me</button>
+      <p class="arcade-progress"></p>
+      <div class="arcade-groups"></div>
+    `;let e=y(n(p)),t=x(e);m.querySelector(`.arcade-progress`).textContent=S(t.length);let r=n=>{let{name:r}=i(n),a=document.createElement(`button`);a.type=`button`,a.className=`secondary arcade-game`,a.dataset.game=n,a.textContent=`${C[n]} ${r}`;let s=e[n];if(s!==void 0){let e=document.createElement(`span`);e.className=`arcade-best`,e.textContent=s===0&&!i(n).lowerIsBetter?`✓ Played`:`Best: ${o(n,s)}`,a.append(e)}else if(t.length>0){let e=document.createElement(`span`);e.className=`arcade-new`,e.textContent=`✨ New`,a.append(e)}return a.addEventListener(`click`,()=>E(n)),a};m.querySelector(`.arcade-groups`).replaceChildren(...c.map(({title:e,games:t})=>{let n=document.createElement(`section`);n.className=`arcade-group`;let i=document.createElement(`h3`);i.textContent=e;let a=document.createElement(`div`);return a.className=`arcade-list`,a.append(...t.map(r)),n.append(i,a),n})),m.querySelector(`#arcade-surprise`).addEventListener(`click`,()=>E(w(g,Math.random,t)),{once:!0})}let g=null;function E(e){g=e,r.abort(),r=new AbortController;let t=AbortSignal.any([r.signal,d.signal]);f(m,e,t=>D(e,t),t,`Free play`)}function D(t,r){let{name:c}=i(t),d=y(n(p))[t]===void 0,{best:f,newBest:g}=b(t,r),S=_(t,r),w=x(y(n(p))).length,D=d?`🎮 First play! ${w} of ${s.length} games played.`:g?`🏆 New best!`:`Your best: ${o(t,f)}`;m.innerHTML=`
+      <p class="gate-label">${C[t]} ${c}</p>
+      <h2 class="gate-score">${o(t,r)}</h2>
+      <p class="hint arcade-way" ${a(t)===null?`hidden`:``}>${a(t)===`faster`?`Faster`:`Fewer`} is better</p>
+      <p class="arcade-result">${D}</p>
+      <div class="arcade-recent" ${S.length<2?`hidden`:``}>
+        <span class="arcade-recent-label">Last ${S.length} tries</span>
+        <ol class="arcade-recent-list" aria-label="Your last ${S.length} scores, oldest first"></ol>
+        <p class="arcade-trend"></p>
+      </div>
+      <p class="round-change"></p>
+      <div class="practice-actions">
+        <button id="arcade-again" type="button">Play again</button>
+        <button id="arcade-pick" class="secondary" type="button">Pick another game</button>
+      </div>
+    `,m.querySelector(`.round-change`).textContent=T(t,r);let O=S.reduce((e,n,r)=>u(t,S[e],n)?e:r,0);m.querySelector(`.arcade-recent-list`).replaceChildren(...S.map((e,t)=>{let n=document.createElement(`li`);return n.textContent=String(e),n.classList.toggle(`latest`,t===S.length-1),n.classList.toggle(`best`,t===O),n})),m.querySelector(`.arcade-trend`).textContent=v(t,S),m.querySelector(`#arcade-again`).addEventListener(`click`,()=>E(t),{once:!0}),m.querySelector(`#arcade-pick`).addEventListener(`click`,h,{once:!0}),m.querySelector(`#arcade-again`).focus(),g&&l(e)}e.querySelector(`#end-button`).addEventListener(`click`,()=>{d.abort(),t()}),h()}export{h as RECENT_KEPT,T as describeFreePlayScore,S as describePlayed,v as describeRecentTrend,y as parseArcadeBests,g as parseArcadeRecent,x as playedGames,b as recordArcadeScore,_ as recordRecentScore,E as showArcadeScreen,w as surpriseGame};
