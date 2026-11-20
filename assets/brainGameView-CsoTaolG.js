@@ -1,4 +1,4 @@
-import{S as e,T as t,_ as n,a as r,c as i,d as a,f as o,g as s,h as c,l,n as u,o as d,s as f,t as p,u as m,w as h,x as g}from"./index-BMipHvdt.js";function _(e,t=Math.random,n=.3){for(let r=0;r<50;r++){let r={x:t(),y:t()};if(Math.hypot(r.x-e.x,r.y-e.y)>=n)return r}return{x:+(e.x<.5),y:+(e.y<.5)}}var v=44;function y(e,t,n,r){let{later:i}=$(r);e.innerHTML=`
+import{S as e,T as t,_ as n,a as r,c as i,d as a,f as o,g as s,h as c,l,n as u,o as d,s as f,t as p,u as m,w as h,x as g}from"./index-Bp4Ailom.js";function _(e,t=Math.random,n=.3){for(let r=0;r<50;r++){let r={x:t(),y:t()};if(Math.hypot(r.x-e.x,r.y-e.y)>=n)return r}return{x:+(e.x<.5),y:+(e.y<.5)}}var v=44;function y(e,t,n,r){let{later:i}=$(r);e.innerHTML=`
     ${t(`Tap 15 targets as fast as you can`)}
     <p class="game-status" aria-live="polite">Tap the target to start.</p>
     <div class="aim-area"><button type="button" class="aim-target" aria-label="Target">🎯</button></div>
